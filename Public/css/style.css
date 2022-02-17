@@ -483,7 +483,7 @@ body{
 }
 .input_form_desabonner:focus-within{
     box-shadow: 0 0 4px #007bff;
-    margin:5px 0;
+    /* margin:5px 0; */
 }
 .form_desabonner{
     width: 73%;
@@ -556,6 +556,20 @@ body{
 
 
 /* --media query */
+
+@media screen and (min-width:1150px){
+    .form_desabonner {
+        width: 95%;
+        margin: 80px auto;
+        top: 20%;
+    }
+    .container_page_contact {
+        border-radius: 20px;
+        padding: 20px 20px 2px 30px;
+        background-color: white;
+        max-width: 682px;
+    }
+}
 @media screen and (max-width:1150px){
     .container_page_contact {
         border-radius: 20px;

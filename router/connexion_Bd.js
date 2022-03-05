@@ -2,10 +2,12 @@ const express =require('express')
 const router = express.Router();
 let db =require('../bd/dabase')
 
+
+//verification de la connexion a a la base de donnee
 db.connect(function (err) {
     if (err) {
       console.log(err);
-      res.send('une erreur est survenue')
+      res.render('une erreur est survenue')
     } else {
       console.log("Connected!");
      }

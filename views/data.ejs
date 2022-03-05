@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../Public/css/style.css">
     <title>Document</title>
 </head>
-<body>
-    
+<body class="body_recuperation_crud">
+     <div class="container">
+       <div class="row">
+           <table class="table table-bordered striped-table">
+             <thead>
+                 <tr>
+                     <th>Nom</th>
+                     <th>prenom</th>
+                     <th>Email</th>
+                     <th>sexe</th>
+                     <th>Ville</th>
+                     <th>Code</th>
+                 </tr>
+             </thead>
+           <tbody>
+            <% data.forEach(function(users){ %>
+                <tr>
+                    <td><%= users.Nom %></td>
+                    <td><%= users.prenom %></td>
+                    <td><%= users.email %></td>
+                    <td><%= users.sexe %></td>
+                    <td><%= users.ville %></td>
+                    <td><%= users.code %></td>
+                    <td>
+                        <a href="/delete?id=<%= users.id %>" onclick="  confirm('voulez-vous supprimer?')" class=" btn bg-danger text-white py-2 "><i class="fa-solid fa-trash"></i></a>
+                        <a href="/edit?id=<%= users.id %>" class="btn bg-success text-white py-2 "><i class="fa-solid fa-pen"></i></a> 
+                    </td>
+                </tr>
+                
+         <%}) ;%>
+           </tbody>
+           </table>
+       </div>
+     </div>
 </body>
 </html>

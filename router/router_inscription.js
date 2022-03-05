@@ -6,10 +6,13 @@ const database = require('../bd/dabase');
 let jsonParser= bodyParser.json()
 let urlencodedParser = bodyParser.urlencoded({extended:false});
 
+//afficher la page d'inscription
+
 router.get('/page_inscription' ,(req ,res)=>{
     res.render('../views/page_inscription')
 })
 
+// recuperer 
 router.post('/page_inscription',  urlencodedParser,(req,res) =>{
 
     let {Nom,prenom,email,sexe,ville,code } =req.body

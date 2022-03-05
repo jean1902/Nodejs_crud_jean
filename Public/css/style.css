@@ -364,6 +364,9 @@ body{
 .body_recuperation_crud{
     background-color: white;
 }
+.row_data{
+    margin-top: 30px;
+}
 @media screen and (max-width:766px){
     .title_sectionLeft {
         text-align: center;

@@ -1,21 +1,21 @@
 
 const express =require('express')
-const router = express.Router();
+const router = express.Router()
 let bodyParser = require('body-parser');
-const database = require('../bd/dabase');
 let jsonParser= bodyParser.json()
 let urlencodedParser = bodyParser.urlencoded({extended:false});
 
-router.get('/page_inscription' ,(req ,res)=>{
-    res.render('../views/page_inscription')
-})
+// routes
 
-router.post('/page_inscription',  urlencodedParser,(req,res) =>{
+router.get('/data' ,(req,rows,fields)=>{
+    res.render('../views/data',{data:rows})
+})
+router.post('/data',  urlencodedParser,(req,res) =>{
 
     let {Nom,prenom,email,sexe,ville,code } =req.body
     console.log("donnee_du formulaire",req.body)
   
-    let sql= "INSERT INTO `user` (`Nom`, `prenom`, `email`, `sexe`,`ville`,`code`) VALUES (?,?,?,?,?,?)"; 
+    let sql= "SELECT * FROM `user` (`Nom`, `prenom`, `email`, `sexe`,`ville`,`code`) "; 
     
     database.query(sql,[Nom,prenom,email,sexe,ville,code],(err,result)=>{
        console.log('bonjour ');
@@ -29,9 +29,4 @@ router.post('/page_inscription',  urlencodedParser,(req,res) =>{
         }
    })
   });
-  
-  
-
-
-
 module.exports =router;

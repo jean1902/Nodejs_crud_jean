@@ -1,17 +1,11 @@
 const express =require('express')
 const router = express.Router();
 let db =require('../bd/dabase')
+let controller_Connex =require('../controllers/controller_conex_bd');
 
 
 //verification de la connexion a a la base de donnee
-db.connect(function (err) {
-    if (err) {
-      console.log(err);
-      res.render('une erreur est survenue')
-    } else {
-      console.log("Connected!");
-     }
-    
-  });
+db.connect( controller_Connex.requette_bd);
+
 
 module.exports =router;

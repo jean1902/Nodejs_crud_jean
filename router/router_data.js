@@ -4,30 +4,12 @@ const router = express.Router()
 let bodyParser = require('body-parser');
 let jsonParser= bodyParser.json()
 let urlencodedParser = bodyParser.urlencoded({extended:false});
+let control_data_router =require('../controllers/controllers_routerData')
 let db = require('../bd/dabase')
 
 // routes
 
-router.get('/data' ,(req,res)=>{
-
-    
-    console.log("donnee_de la bd")
-  
-    let sql= "SELECT * FROM `user`"; 
-    
-    db.query(sql,[],(err,result)=>{
-       console.log('bonjour ');
-        if (err) { 
-            console.log("ERREUR",err);   
-            // res.send('bonjour') 
-            
-        } else {
-            console.log("success",result);
-            res.render('../views/data',{data:result})
-        }
-   })
-   
-})
+router.get('/data' , control_data_router.req_data_router)
 
 
 
@@ -47,9 +29,29 @@ router.get('/edit',(req,res)=>{
         if (error) {
             console.log('eeeeeee',error);
         } else {
-            res.render('../views/index',{data:result[0]});
+            res.render('../views/form_edit',{data:result[0]});
             console.log("eeerfftt",result[0]);
         }
     })
 })
+
+router.post('/form_edit', function(req,res,next){
+    db.query(`INSERT INTO user SET ? `, req.body ,function(error,result){
+        res.send('insertion avec succes')
+    })
+})
+router.post('/form_edit', function(req,res,next){
+
+    let param =[
+        req.body,             //mise a jour des donnees
+        req.query.id
+    ]
+    db.query(`INSERT INTO user SET ? `, param ,function(error,result){
+        res.redirect('/page_inscription');
+        //aller a la page de selection
+      
+    })
+})
+
+
 module.exports =router;

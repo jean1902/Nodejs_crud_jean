@@ -586,6 +586,52 @@ body{
 }
 
 
+.body_sendMail{
+    background-color: white;
+}
+/* formulaire send_mail */
+
+
+.fomulaire_sendMail{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #c6e4ee;
+    border-radius: 9px;
+    padding: 20px;
+
+}
+.title_send_mail{
+    font-size: 18px;
+    color: white;
+    margin-bottom: 30px;
+}
+.label{
+    display: inline-block;
+    width: 100px;
+}
+.form_group_send_form{
+    padding: 15px 0;
+}
+.form_group_send_form input{
+    border: none;
+    padding: 8px 5px;
+    outline: none;
+    border-radius: 4px;
+}
+.btn_send_mail{
+    margin-top: 30px;
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+    border-radius: 4px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
 /* --- inscription --- */
 
 .row_inscription{

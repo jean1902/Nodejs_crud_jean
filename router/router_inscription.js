@@ -74,8 +74,39 @@ body('code')
 
 ]
       
-});
+} );
 
 
+// router.post('/page_inscription', (req,res)=>{
+  
+
+// console.log('hello')
+
+//   var nodemailer = require('nodemailer');
+  
+//   var transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//       user: 'jeantiero41@gmail.com',
+//       pass: 'jeanrodolphe2018'
+//     }
+//   });
+  
+//   var mailOptions = {
+//     from: 'jeantiero41@gmail.com',
+//     to: req.body.email,
+//     subject: 'Sending Email using Node.js',
+//     html: '<h1>That was easy!</h1>'
+//   };
+  
+//   transporter.sendMail(mailOptions, function(error, info){
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       console.log('Email sent: ' + info.response);
+//     }
+//   });
+  
+//   })
 
 module.exports = router;

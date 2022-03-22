@@ -1,5 +1,6 @@
 const express = require("express");
 const App = express();
+const bodyParser =require('body-parser')
 const Port = 9000;
 const router = require("./router/routerIndex");
 const router_contact = require("./router/router_contact");
@@ -46,6 +47,8 @@ App.use("/", router_inscription);
 App.use("/", router_connexion);
 App.use("/", router_data);
 App.use("/",router_form_edit);
+App.use(bodyParser.urlencoded({ extended: false })); 
+App.use(bodyParser.json())
 App.use("/", send_mail)
 
 

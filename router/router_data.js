@@ -43,10 +43,11 @@ router.get('/edit',(req,res)=>{
 //     })
 // })
 
-router.post('/form_edit/:id ', function(req,res,next){
-const id =req.query.id;
+router.post('/form_edit', function(req,res,next){
+
 let {Nom,prenom,email,sexe,ville,code} = req.body
-    db.query('UPDATE user SET Nom=?,prenom=?,email=?,sexe=?,ville=?,code=? WHERE id =?', [req.params.id] ,function(error,result){
+let sql ='UPDATE user SET Nom=?,prenom=?,email=?,sexe=?,ville=?,code=? WHERE id =?'
+    db.query(sql,[Nom ,prenom,email,sexe,ville,code,req.params.id] ,function(error,result){
       if(error){
         console.log
       } else{

@@ -12,17 +12,19 @@ let db = require('../bd/dabase')
 router.get('/data' , control_data_router.req_data_router)
 
 
-
+/// supprimer les donnes du crud
 router.get('/delete',(req,res)=>{
-    db.query(`DELETE  FROM user WHERE id = ?`, [req.query.id],(error,resl)=>{
+    db.query(`DELETE  FROM user WHERE id = ?`, [req.query.id],(error,result)=>{
         if (error) {
             console.log('eeeeeee',error);
         } else {
-            console.log('eeeeerrrrrr',resl);
+            console.log('eeeeerrrrrr',result);
             res.redirect('/data')
         }
     })
 })
+
+//faire afficher les donne su
 
 router.get('/edit',(req,res)=>{
     db.query(`SELECT * FROM user WHERE id = ?`,[req.query.id],(error,result)=>{
@@ -35,20 +37,22 @@ router.get('/edit',(req,res)=>{
     })
 })
 
-router.post('/form_edit', function(req,res,next){
-    db.query(`INSERT INTO user SET ? `, req.body ,function(error,result){
-        res.send('insertion avec succes')
-    })
-})
-router.post('/form_edit', function(req,res,next){
+// router.post('/form_edit', function(req,res,next){
+//     db.query(`UPDATE user SET ? WHERE id =${id}`, req.body ,function(error,result){
+//         res.send('insertion avec succes')
+//     })
+// })
 
-    let param =[
-        req.body,             //mise a jour des donnees
-        req.query.id
-    ]
-    db.query(`INSERT INTO user SET ? `, param ,function(error,result){
-        res.redirect('/page_inscription');
+router.post('/form_edit/:id ', function(req,res,next){
+const id =req.query.id;
+let {Nom,prenom,email,sexe,ville,code} = req.body
+    db.query('UPDATE user SET Nom=?,prenom=?,email=?,sexe=?,ville=?,code=? WHERE id =?', [req.params.id] ,function(error,result){
+      if(error){
+        console.log
+      } else{
+        res.redirect('/data');
         //aller a la page de selection
+      }
       
     })
 })
